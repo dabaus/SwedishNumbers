@@ -26,7 +26,7 @@ namespace SwedishSSNValidator.ValidityChecks
             {
                 return _dateCheck.IsValid(Subtract60(input));
             }
-            catch (FormatException _)
+            catch (FormatException)
             {
                 return false;
             }
