@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace SwedishSSNValidator.ValidityChecks
 {
+    public interface ISammordningsNrValidityCheck : IValidityCheck
+    {
 
-    public class SammordningsNrValidityCheck : IValidityCheck
+    }
+
+    public class SammordningsNrValidityCheck : ISammordningsNrValidityCheck
     {
 
         private IPersonnummerValidityCheck _pnrValidityCheck;
 
         public SammordningsNrValidityCheck(ILuhnsChecksumValidityCheck luhnsCheck, 
-                                           ISammordningsNrDateCheck dateCheck)
+                                           ISammordningsNrDateValidityCheck dateCheck)
         {
             _pnrValidityCheck = new PersonNrValidityCheck(luhnsCheck, dateCheck);
         }

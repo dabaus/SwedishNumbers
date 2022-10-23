@@ -2,16 +2,16 @@
 
 namespace SwedishSSNValidator.ValidityChecks
 {
-    public interface ISammordningsNrDateCheck : IDateValidityCheck
+    public interface ISammordningsNrDateValidityCheck : IDateValidityCheck
     {
 
     }
 
-    public class SammordningsNrDateCheck : ISammordningsNrDateCheck
+    public class SammordningsNrDateValidityCheck : ISammordningsNrDateValidityCheck
     {
         private IDateValidityCheck _dateCheck;
 
-        public SammordningsNrDateCheck(IDateValidityCheck dateCheck)
+        public SammordningsNrDateValidityCheck(IDateValidityCheck dateCheck)
         {
             _dateCheck = dateCheck;
         }

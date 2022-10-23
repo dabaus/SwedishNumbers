@@ -13,7 +13,7 @@ namespace SwedishSSNValidatorTests
         {
             _snrCheck= new SammordningsNrValidityCheck(
                             new LuhnsChecksumValidityCheck(),
-                            new SammordningsNrDateCheck(
+                            new SammordningsNrDateValidityCheck(
                                  new DateValidityCheck()
                             ));
         }

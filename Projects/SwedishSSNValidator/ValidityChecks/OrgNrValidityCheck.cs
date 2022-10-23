@@ -3,11 +3,11 @@
 namespace SwedishSSNValidator.ValidityChecks
 {
 
-    public interface IOrganisationsNrValidityCheck : IValidityCheck 
+    public interface IOrgNrValidityCheck : IValidityCheck 
     {
     }
 
-    public class OrgNrValidityCheck : IOrganisationsNrValidityCheck
+    public class OrgNrValidityCheck : IOrgNrValidityCheck
     {
         private static readonly Regex LongFormRegex = new Regex("^(16)[0-9]{6}[\\-]?[0-9]{4}$", RegexOptions.Compiled);
         private static readonly Regex ShortFormRegex = new Regex("^[0-9]{6}[\\-]?[0-9]{4}$", RegexOptions.Compiled);
