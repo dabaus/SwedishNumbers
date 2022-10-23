@@ -1,11 +1,15 @@
 using SwedishSSNValidator;
 using FluentAssertions;
+using SwedishSSNValidator.ValidityChecks;
 
 namespace SwedishSSNValidatorTests
 {
     public class TestPersonNrValidityCheck
     {
-        private PersonNrValidityCheck pnrCheck = new PersonNrValidityCheck(new LuhnsChecksumValidityCheck(), new DateValidityCheck());
+        private PersonNrValidityCheck pnrCheck = 
+            new PersonNrValidityCheck(
+                new LuhnsChecksumValidityCheck(), 
+                new DateValidityCheck());
 
         [SetUp]
         public void Setup()

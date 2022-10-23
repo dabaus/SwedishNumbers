@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 
 
-namespace SwedishSSNValidator
+namespace SwedishSSNValidator.ValidityChecks
 {
     public interface IDateValidityCheck : IValidityCheck
     {
@@ -12,11 +12,11 @@ namespace SwedishSSNValidator
     {
         public bool IsValid(string input)
         {
-            if(input.Length == 8)
+            if (input.Length == 8)
             {
                 return LongDateValid(input);
             }
-            if(input.Length == 6)
+            if (input.Length == 6)
             {
                 return ShortDateValid(input);
             }

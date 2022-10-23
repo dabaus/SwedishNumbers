@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace SwedishSSNValidator
+namespace SwedishSSNValidator.ValidityChecks
 {
     public interface ISammordningsNrDateCheck : IDateValidityCheck
     {
@@ -18,14 +18,15 @@ namespace SwedishSSNValidator
 
         public bool IsValid(string input)
         {
-            if(input.Length < 6)
+            if (input.Length < 6)
             {
                 return false;
             }
             try
             {
                 return _dateCheck.IsValid(Subtract60(input));
-            } catch(FormatException _)
+            }
+            catch (FormatException _)
             {
                 return false;
             }

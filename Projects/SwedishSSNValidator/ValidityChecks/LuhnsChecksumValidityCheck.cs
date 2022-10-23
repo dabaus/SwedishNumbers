@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace SwedishSSNValidator
+namespace SwedishSSNValidator.ValidityChecks
 {
     public interface ILuhnsChecksumValidityCheck : IValidityCheck
     {
@@ -12,10 +12,10 @@ namespace SwedishSSNValidator
 
         public bool IsValid(string input)
         {
-            if(!IsNumeric.IsMatch(input))
+            if (!IsNumeric.IsMatch(input))
             {
                 return false;
-            } 
+            }
 
             var controlDigit = int.Parse(input.Substring(input.Length - 1));
             var chars = input.Remove(input.Length - 1).ToCharArray();
@@ -34,14 +34,14 @@ namespace SwedishSSNValidator
             }
             var sum = products.SelectMany(x => x.ToCharArray())
                 .Sum(x => ToInt(x));
-            var computedDigit = (10 - (sum % 10)) % 10;
+            var computedDigit = (10 - sum % 10) % 10;
 
             return controlDigit == computedDigit;
         }
 
         private static int ToInt(char c)
         {
-            return (int)(c - '0');
+            return c - '0';
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwedishSSNValidator
+namespace SwedishSSNValidator.ValidityChecks
 {
     public interface IValidityCheck
     {
