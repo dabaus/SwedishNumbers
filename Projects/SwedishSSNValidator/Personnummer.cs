@@ -8,47 +8,39 @@ using System.Threading.Tasks;
 namespace SwedishSSNValidator { 
 
 
-    public class Personnummer
+    public static class Personnummer
     {
-        private static readonly Regex StartsWithYearRegex = new Regex(@"^(18|19|20)[0-9]{6}[\\-]?[0-9]{4}$", RegexOptions.Compiled);
-        private static readonly Regex ShortFormPlusSeparatorRegex = new Regex(@"^[0-9]{6}\\+[0-9]{4}$", RegexOptions.Compiled);
-        private static readonly Regex ShortFormRegex = new Regex(@"^[0-9]{6}[\\-]?[0-9]{4}$", RegexOptions.Compiled);
+        private static readonly Regex StartsWithYearRegex = new Regex("^(18|19|20)[0-9]{6}[\\-]?[0-9]{4}$", RegexOptions.Compiled);
+        private static readonly Regex ShortFormPlusSeparatorRegex = new Regex("^[0-9]{6}(\\+)[0-9]{4}$", RegexOptions.Compiled);
+        private static readonly Regex ShortFormRegex = new Regex("^[0-9]{6}[\\-]?[0-9]{4}$", RegexOptions.Compiled);
 
-        private bool _startsWithYear;
-        private bool _isShortForm;
-        private bool _isShortFormWithPlus;
-
-        private string _personnummer;
-
-        public Personnummer(string input)
+  
+        public static bool IsValid(string input)
         {
-            _startsWithYear = StartsWithYearRegex.IsMatch(input);
-            _isShortForm = ShortFormRegex.IsMatch(input);
-            _isShortFormWithPlus = ShortFormPlusSeparatorRegex.IsMatch(input);
-        }
+            bool startsWithYear = StartsWithYearRegex.IsMatch(input);
+            bool isShortForm = ShortFormRegex.IsMatch(input);
+            bool isShortFormWithPlus = ShortFormPlusSeparatorRegex.IsMatch(input);
 
-        public bool IsValid()
-        {
-            if (_startsWithYear)
+            if (startsWithYear)
             {
-                var normalized = _personnummer.Substring(2).Replace("-", "");
+                var normalized = input.Substring(2).Replace("-", "");
                 return IsChecksumValid(normalized);
             }
-            if(_isShortForm)
+            if(isShortForm)
             {
-                var normalized = _personnummer.Replace("-", "");
+                var normalized = input.Replace("-", "");
                 return IsChecksumValid(normalized);
             }
-            if(_isShortFormWithPlus)
+            if(isShortFormWithPlus)
             {
-                var normalized = _personnummer.Replace("+", "");
+                var normalized = input.Replace("+", "");
                 return IsChecksumValid(normalized);
             }
             return false;
         }
 
     
-        private bool IsChecksumValid(string input)
+        private static bool IsChecksumValid(string input)
         {
             var controlDigit = int.Parse(input.Substring(input.Length - 1));
             var chars = input.Remove(input.Length-1).ToCharArray();
@@ -66,7 +58,7 @@ namespace SwedishSSNValidator {
             }
             var sum = products.SelectMany(x => x.ToCharArray())
                 .Sum(x => ToInt(x));
-            var computedDigit = (10 - (sum % 10)) % sum;
+            var computedDigit = (10 - (sum % 10)) % 10;
 
             return controlDigit == computedDigit;
         }
