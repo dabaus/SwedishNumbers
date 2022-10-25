@@ -5,14 +5,9 @@ namespace SwedishSSNValidatorTests
 {
     public class TestOrgNrValidityCheck
     {
-        private OrgNrValidityCheck _orgCheck;
+        private readonly OrgNrValidityCheck _orgCheck = new (new LuhnsChecksumValidityCheck());
 
-        [SetUp]
-        public void Setup()
-        {
-            _orgCheck = new OrgNrValidityCheck(new LuhnsChecksumValidityCheck());
-        }
-
+     
         [Test]
         [TestCase("556614-3185")]
         [TestCase("16556601-6399")]

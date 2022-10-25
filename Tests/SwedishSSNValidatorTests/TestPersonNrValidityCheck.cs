@@ -6,15 +6,10 @@ namespace SwedishSSNValidatorTests
 {
     public class TestPersonNrValidityCheck
     {
-        private PersonNrValidityCheck pnrCheck = 
-            new PersonNrValidityCheck(
-                new LuhnsChecksumValidityCheck(), 
-                new DateValidityCheck());
+        private readonly PersonNrValidityCheck _pnrCheck = new (
+                 new LuhnsChecksumValidityCheck(), 
+                 new DateValidityCheck());
 
-        [SetUp]
-        public void Setup()
-        {
-        }
 
         [Test]
         [TestCase("20080903-2386")]
@@ -28,7 +23,7 @@ namespace SwedishSSNValidatorTests
         [TestCase("189912299816")]
         public void TestValidLongNumbers(string pnr)
         {
-            pnrCheck.IsValid(pnr).Should().BeTrue();
+            _pnrCheck.IsValid(pnr).Should().BeTrue();
         }
 
         [Test]
@@ -38,7 +33,7 @@ namespace SwedishSSNValidatorTests
         [TestCase("900118+9811")]
         public void TestShortNumbers(string pnr)
         {
-            pnrCheck.IsValid(pnr).Should().BeTrue();
+            _pnrCheck.IsValid(pnr).Should().BeTrue();
         }
 
         [Test]
@@ -46,7 +41,7 @@ namespace SwedishSSNValidatorTests
         [TestCase("190302299813")]
         public void TestInvalidNumbers(string pnr)
         {
-            pnrCheck.IsValid(pnr).Should().BeFalse();
+            _pnrCheck.IsValid(pnr).Should().BeFalse();
         }
     }
 }
