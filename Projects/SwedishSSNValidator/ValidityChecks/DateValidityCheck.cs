@@ -1,12 +1,9 @@
 ﻿using System.Globalization;
+using SwedishSSNValidator.ValidityChecks.Interfaces;
 
 
 namespace SwedishSSNValidator.ValidityChecks
 {
-    public interface IDateValidityCheck : IValidityCheck
-    {
-
-    }
 
     public class DateValidityCheck : IDateValidityCheck
     {

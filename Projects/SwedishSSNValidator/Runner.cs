@@ -1,15 +1,16 @@
 ﻿using SwedishSSNValidator.ValidityChecks;
+using SwedishSSNValidator.ValidityChecks.Interfaces;
 
 namespace SwedishSSNValidator
 {
     public class Runner
     {
 
-        private readonly IPersonnummerValidityCheck _pNrVadilityCheck;
+        private readonly IPersonNrValidityCheck _pNrVadilityCheck;
         private readonly ISammordningsNrValidityCheck _samNrVadilityCheck;
         private readonly IOrgNrValidityCheck _orgNrValidityCheck;
 
-        public Runner(IPersonnummerValidityCheck pNrVadilityCheck,
+        public Runner(IPersonNrValidityCheck pNrVadilityCheck,
                       ISammordningsNrValidityCheck samNrVadilityCheck,
                       IOrgNrValidityCheck orgNrValidityCheck)
         {

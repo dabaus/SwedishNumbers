@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SwedishSSNValidator.ValidityChecks.Interfaces;
 
 namespace SwedishSSNValidator.ValidityChecks
 {
-    public interface ISammordningsNrValidityCheck : IValidityCheck
-    {
-
-    }
 
     public class SammordningsNrValidityCheck : ISammordningsNrValidityCheck
     {
 
-        private IPersonnummerValidityCheck _pnrValidityCheck;
+        private IPersonNrValidityCheck _pnrValidityCheck;
 
         public SammordningsNrValidityCheck(ILuhnsChecksumValidityCheck luhnsCheck, 
                                            ISammordningsNrDateValidityCheck dateCheck)

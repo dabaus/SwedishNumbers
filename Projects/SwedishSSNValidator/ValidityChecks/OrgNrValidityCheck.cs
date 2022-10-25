@@ -1,12 +1,8 @@
 ﻿using System.Text.RegularExpressions;
+using SwedishSSNValidator.ValidityChecks.Interfaces;
 
 namespace SwedishSSNValidator.ValidityChecks
 {
-
-    public interface IOrgNrValidityCheck : IValidityCheck 
-    {
-    }
-
     public class OrgNrValidityCheck : IOrgNrValidityCheck
     {
         private static readonly Regex LongFormRegex = new Regex("^(16)[0-9]{6}[\\-]?[0-9]{4}$", RegexOptions.Compiled);

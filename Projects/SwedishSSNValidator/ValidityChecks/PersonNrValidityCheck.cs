@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using SwedishSSNValidator.ValidityChecks.Interfaces;
 
 namespace SwedishSSNValidator.ValidityChecks
 {
 
-    public interface IPersonnummerValidityCheck : IValidityCheck
-    {
-    }
-
-    public class PersonNrValidityCheck : IPersonnummerValidityCheck
+    public class PersonNrValidityCheck : IPersonNrValidityCheck
     {
         private static readonly Regex LongFormatRegex = new Regex("^(18|19|20)[0-9]{6}[\\-]?[0-9]{4}$", RegexOptions.Compiled);
         private static readonly Regex ShortFormPlusSeparatorRegex = new Regex("^[0-9]{6}(\\+)[0-9]{4}$", RegexOptions.Compiled);

@@ -1,10 +1,8 @@
 ﻿using System.Text.RegularExpressions;
+using SwedishSSNValidator.ValidityChecks.Interfaces;
 
 namespace SwedishSSNValidator.ValidityChecks
 {
-    public interface ILuhnsChecksumValidityCheck : IValidityCheck
-    {
-    }
 
     public class LuhnsChecksumValidityCheck : ILuhnsChecksumValidityCheck
     {

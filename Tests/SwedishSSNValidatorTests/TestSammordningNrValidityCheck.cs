@@ -1,5 +1,4 @@
-﻿using SwedishSSNValidator;
-using FluentAssertions;
+﻿using FluentAssertions;
 using SwedishSSNValidator.ValidityChecks;
 
 namespace SwedishSSNValidatorTests

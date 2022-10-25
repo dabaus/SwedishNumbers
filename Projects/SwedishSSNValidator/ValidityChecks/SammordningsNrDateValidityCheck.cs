@@ -1,11 +1,8 @@
 ﻿using System.Text.RegularExpressions;
+using SwedishSSNValidator.ValidityChecks.Interfaces;
 
 namespace SwedishSSNValidator.ValidityChecks
 {
-    public interface ISammordningsNrDateValidityCheck : IDateValidityCheck
-    {
-
-    }
 
     public class SammordningsNrDateValidityCheck : ISammordningsNrDateValidityCheck
     {
