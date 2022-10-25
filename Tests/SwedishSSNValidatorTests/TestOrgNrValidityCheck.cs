@@ -14,12 +14,13 @@ namespace SwedishSSNValidatorTests
         }
 
         [Test]
-        public void TestValidNumbers()
+        [TestCase("556614-3185")]
+        [TestCase("16556601-6399")]
+        [TestCase("262000-1111")]
+        [TestCase("857202-7566")]
+        public void TestValidNumbers(string pnr)
         {
-            _orgCheck.IsValid("556614-3185").Should().BeTrue();
-            _orgCheck.IsValid("16556601-6399").Should().BeTrue();
-            _orgCheck.IsValid("262000-1111").Should().BeTrue();
-            _orgCheck.IsValid("857202-7566").Should().BeTrue();
+            _orgCheck.IsValid(pnr).Should().BeTrue();
         }
 
 
